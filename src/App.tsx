@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { WhyXanso } from './components/WhyXanso';
@@ -30,7 +31,7 @@ import type { Program, Trainer, LiveClass, OnDemandVideo, AssessmentResult } fro
 import { LIVE_CLASSES_DATA } from './data/liveClassesData';
 import { PROGRAMS_DATA } from './data/programsData';
 
-export function App() {
+function MainApp() {
   // Modals & Active State
   const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
   const [isFreeTrialOpen, setIsFreeTrialOpen] = useState(false);
@@ -110,7 +111,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0D14] text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
+    <div className="min-h-screen bg-[#F7FAF8] dark:bg-[#0A0D14] text-slate-900 dark:text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950 transition-colors duration-300">
       
       {/* Sticky Navigation */}
       <Navbar
@@ -266,6 +267,14 @@ export function App() {
       <ToastContainer toasts={toasts} onDismiss={removeToast} />
 
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <ThemeProvider>
+      <MainApp />
+    </ThemeProvider>
   );
 }
 

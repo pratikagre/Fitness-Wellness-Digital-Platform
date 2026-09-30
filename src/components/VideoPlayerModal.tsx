@@ -28,15 +28,15 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   if (!video) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 dark:bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
       <div 
-        className="relative w-full max-w-4xl bg-[#0E131E] border border-white/10 rounded-3xl shadow-2xl overflow-hidden my-8"
+        className="relative w-full max-w-4xl bg-white dark:bg-[#0E131E] border border-slate-200 dark:border-white/10 rounded-3xl shadow-2xl overflow-hidden my-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-slate-300 hover:text-white hover:bg-black/80 border border-white/10 transition-colors z-20"
+          className="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-slate-200 hover:text-white hover:bg-black/80 border border-white/20 transition-colors z-20"
         >
           <X className="w-5 h-5" />
         </button>
@@ -99,43 +99,43 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase">
+                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase">
                   {video.category}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-white text-xs font-medium">
+                <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 dark:bg-white/10 dark:text-white text-xs font-medium border border-slate-200 dark:border-transparent">
                   {video.level}
                 </span>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-white font-display">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-display">
                 {video.title}
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Guided by {video.trainerName} · {video.views.toLocaleString()} views
               </p>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="px-4 py-2 rounded-2xl bg-white/5 border border-white/5 text-center">
-                <span className="text-[10px] text-slate-400 block uppercase">Duration</span>
-                <span className="text-sm font-bold text-white">{video.durationMin} mins</span>
+              <div className="px-4 py-2 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-center">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block uppercase">Duration</span>
+                <span className="text-sm font-bold text-slate-900 dark:text-white">{video.durationMin} mins</span>
               </div>
-              <div className="px-4 py-2 rounded-2xl bg-white/5 border border-white/5 text-center">
-                <span className="text-[10px] text-slate-400 block uppercase">Estimated Burn</span>
-                <span className="text-sm font-bold text-amber-400">~{video.caloriesBurnedEstimate} kcal</span>
+              <div className="px-4 py-2 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-center">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 block uppercase">Estimated Burn</span>
+                <span className="text-sm font-bold text-amber-600 dark:text-amber-400">~{video.caloriesBurnedEstimate} kcal</span>
               </div>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-xs sm:text-sm text-slate-300 leading-relaxed">
-            <h4 className="text-xs font-bold uppercase text-slate-400 mb-1">Session Overview & Focus</h4>
+          <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <h4 className="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-1">Session Overview & Focus</h4>
             {video.description}
           </div>
 
-          <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs text-slate-400">
+          <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400">
             <span>Part of the Xanso On-Demand Master Vault</span>
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white font-semibold transition-colors"
+              className="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 dark:bg-white/5 dark:hover:bg-white/10 dark:text-white font-semibold transition-colors"
             >
               Back to Catalog
             </button>

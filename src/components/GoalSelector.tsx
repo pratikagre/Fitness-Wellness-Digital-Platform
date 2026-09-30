@@ -9,10 +9,10 @@ import {
   Heart, 
   Check, 
   ArrowRight, 
-  Sparkles,
-  Clock,
-  Calendar,
-  Star
+  Sparkles, 
+  Clock, 
+  Calendar, 
+  Star 
 } from 'lucide-react';
 import type { GoalCategory, Program } from '../types';
 import { PROGRAMS_DATA } from '../data/programsData';
@@ -42,18 +42,18 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
   const activeGoalData = goals.find(g => g.id === selectedGoal)!;
 
   return (
-    <section id="goal-selector" className="py-20 bg-[#0C101A] border-y border-white/5 relative">
+    <section id="goal-selector" className="py-20 bg-[#F1F6F3] dark:bg-[#0C101A] border-y border-slate-200 dark:border-white/5 relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">
             5. Personalized Matching
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display mt-4 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display mt-4 mb-3">
             What is your primary wellness goal?
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
             Select your focus below to dynamically view the most effective expert-curated programs designed for your exact outcome.
           </p>
         </div>
@@ -69,11 +69,11 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
                 onClick={() => setSelectedGoal(g.id)}
                 className={`px-4 sm:px-5 py-3 rounded-2xl font-semibold text-xs sm:text-sm flex items-center gap-2.5 transition-all duration-200 ${
                   isSelected
-                    ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-lg shadow-emerald-500/25 scale-105'
-                    : 'bg-[#141A28] text-slate-300 hover:text-white hover:bg-[#1A2234] border border-white/5'
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-lg shadow-emerald-500/25 scale-105 font-bold'
+                    : 'bg-white dark:bg-[#141A28] text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-[#1A2234] border border-slate-200 dark:border-white/5 shadow-sm'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isSelected ? 'text-slate-950' : 'text-emerald-400'}`} />
+                <Icon className={`w-4 h-4 ${isSelected ? 'text-slate-950' : 'text-emerald-600 dark:text-emerald-400'}`} />
                 <span>{g.label}</span>
                 {isSelected && <Check className="w-3.5 h-3.5 stroke-[3] text-slate-950" />}
               </button>
@@ -82,21 +82,21 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
         </div>
 
         {/* Active Goal Summary Bar */}
-        <div className="p-4 rounded-2xl bg-white/5 border border-white/10 max-w-4xl mx-auto mb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 max-w-4xl mx-auto mb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-slate-400 font-medium">Recommended Focus</p>
-              <h4 className="text-sm sm:text-base font-bold text-white">
-                {activeGoalData.label}: <span className="text-emerald-400 font-normal">{activeGoalData.tagline}</span>
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Recommended Focus</p>
+              <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                {activeGoalData.label}: <span className="text-emerald-600 dark:text-emerald-400 font-normal">{activeGoalData.tagline}</span>
               </h4>
             </div>
           </div>
           <button
             onClick={onOpenAssessment}
-            className="text-xs font-semibold px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors shrink-0"
+            className="text-xs font-semibold px-4 py-2 rounded-xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-800 dark:text-white border border-slate-200 dark:border-white/10 transition-colors shrink-0"
           >
             Take 8-Question Assessment →
           </button>
@@ -107,7 +107,7 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
           {filteredPrograms.map((prog) => (
             <div 
               key={prog.id}
-              className="rounded-2xl bg-[#111624] border border-white/10 hover:border-emerald-500/40 overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 shadow-lg"
+              className="rounded-2xl bg-white dark:bg-[#111624] border border-slate-200 dark:border-white/10 hover:border-emerald-500/40 overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 shadow-md dark:shadow-lg"
             >
               <div>
                 {/* Program image */}
@@ -117,7 +117,7 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
                     alt={prog.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111624] via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   
                   {/* Badges */}
                   <div className="absolute top-3 left-3 flex gap-1.5">
@@ -131,7 +131,7 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
                     )}
                   </div>
 
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-slate-200">
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
                     <span className="flex items-center gap-1 bg-black/60 backdrop-blur-sm px-2.5 py-1 rounded-lg">
                       <Clock className="w-3.5 h-3.5 text-emerald-400" />
                       {prog.sessionDurationMin}m · {prog.durationWeeks} Weeks
@@ -144,15 +144,15 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
 
                 {/* Details */}
                 <div className="p-5">
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
                     {prog.title}
                   </h3>
-                  <p className="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 mb-4 leading-relaxed">
                     {prog.shortDescription}
                   </p>
 
                   {/* Trainer info */}
-                  <div className="pt-3 border-t border-white/5 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <img 
                         src={prog.trainerPhoto} 
@@ -160,11 +160,11 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
                         className="w-8 h-8 rounded-full object-cover border border-emerald-500/40" 
                       />
                       <div>
-                        <p className="text-xs font-semibold text-slate-200">{prog.trainerName}</p>
-                        <p className="text-[10px] text-slate-400">{prog.sessionsPerWeek} sessions / week</p>
+                        <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">{prog.trainerName}</p>
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400">{prog.sessionsPerWeek} sessions / week</p>
                       </div>
                     </div>
-                    <span className="text-[11px] text-slate-400 font-mono">
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                       {prog.schedule.split('·')[0]}
                     </span>
                   </div>
@@ -175,7 +175,7 @@ export const GoalSelector: React.FC<GoalSelectorProps> = ({
               <div className="p-5 pt-0">
                 <button
                   onClick={() => onSelectProgram(prog)}
-                  className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-emerald-500 hover:text-slate-950 text-emerald-400 font-bold text-xs border border-emerald-500/20 hover:border-emerald-500 transition-all flex items-center justify-center gap-1.5 group-hover:shadow-md group-hover:shadow-emerald-500/20"
+                  className="w-full py-2.5 rounded-xl bg-slate-50 dark:bg-white/5 hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:text-slate-950 text-emerald-700 dark:text-emerald-400 font-bold text-xs border border-emerald-500/30 hover:border-emerald-500 transition-all flex items-center justify-center gap-1.5 group-hover:shadow-md group-hover:shadow-emerald-500/20"
                 >
                   <span>View Full Curriculum & Enroll</span>
                   <ArrowRight className="w-3.5 h-3.5" />

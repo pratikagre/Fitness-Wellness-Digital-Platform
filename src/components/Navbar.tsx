@@ -10,8 +10,10 @@ import {
   Calendar, 
   Award,
   ChevronRight,
-  PhoneCall
+  Sun,
+  Moon
 } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 interface NavbarProps {
   onOpenAssessment: () => void;
@@ -29,6 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#0A0D14]/90 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/40 py-3' 
+          ? 'bg-white/90 dark:bg-[#0A0D14]/90 backdrop-blur-md border-b border-slate-200 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/40 py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -72,41 +75,41 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-2xl tracking-tight text-white font-display">
+                <span className="font-extrabold text-2xl tracking-tight text-slate-900 dark:text-white font-display">
                   XANSO
                 </span>
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 tracking-wider">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 tracking-wider">
                   WELLNESS
                 </span>
               </div>
-              <span className="text-[10px] text-slate-400 tracking-wider uppercase -mt-0.5">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 tracking-wider uppercase -mt-0.5 font-medium">
                 Digital Platform
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1 text-[13px] font-medium text-slate-300">
+          <nav className="hidden xl:flex items-center gap-1 text-[13px] font-medium text-slate-700 dark:text-slate-300">
             {navLinks.slice(0, 7).map((link) => (
               <a 
                 key={link.name} 
                 href={link.href}
-                className="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors"
+                className="px-3 py-1.5 rounded-lg hover:text-emerald-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
               >
                 {link.name}
               </a>
             ))}
             <div className="relative group">
-              <button className="px-3 py-1.5 rounded-lg hover:text-white hover:bg-white/5 transition-colors flex items-center gap-1">
+              <button className="px-3 py-1.5 rounded-lg hover:text-emerald-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors flex items-center gap-1">
                 More
                 <span className="text-slate-400 text-xs">▾</span>
               </button>
-              <div className="absolute top-full left-0 mt-1 w-44 rounded-xl bg-[#121722] border border-white/10 shadow-2xl p-2 hidden group-hover:block backdrop-blur-xl">
+              <div className="absolute top-full left-0 mt-1 w-44 rounded-xl bg-white dark:bg-[#121722] border border-slate-200 dark:border-white/10 shadow-2xl p-2 hidden group-hover:block backdrop-blur-xl">
                 {navLinks.slice(7).map((link) => (
                   <a
                     key={link.name}
                     href={link.href}
-                    className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-300 hover:text-emerald-400 hover:bg-white/5"
+                    className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-slate-50 dark:hover:bg-white/5"
                   >
                     {link.name}
                   </a>
@@ -116,23 +119,37 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2.5">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+              className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 transition-all text-slate-700 dark:text-amber-400 hover:scale-105 shadow-sm"
+              aria-label="Toggle Theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400 fill-amber-400/20" />
+              ) : (
+                <Moon className="w-4 h-4 text-slate-700 fill-slate-700/20" />
+              )}
+            </button>
+
             {/* Quick Assessment trigger */}
             <button
               onClick={onOpenAssessment}
-              className="text-xs font-semibold px-3 py-2 rounded-lg text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 transition-all flex items-center gap-1.5"
+              className="text-xs font-semibold px-3 py-2 rounded-lg text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all flex items-center gap-1.5"
               title="8-Question Free Wellness Assessment"
             >
-              <Flame className="w-3.5 h-3.5 text-emerald-400" />
+              <Flame className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>Free Assessment</span>
             </button>
 
             {/* Member Dashboard */}
             <button
               onClick={onOpenDashboard}
-              className="text-xs font-medium text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-colors flex items-center gap-1.5"
+              className="text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors flex items-center gap-1.5"
             >
-              <User className="w-4 h-4 text-slate-400" />
+              <User className="w-4 h-4 text-slate-500 dark:text-slate-400" />
               <span>Dashboard</span>
             </button>
 
@@ -149,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button 
               onClick={onOpenAdmin}
               title="Open Admin Management Panel"
-              className="p-2 rounded-lg text-slate-500 hover:text-slate-300 hover:bg-white/5 transition-colors"
+              className="p-2 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
             >
               <ShieldCheck className="w-4 h-4" />
             </button>
@@ -157,6 +174,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 xl:hidden">
+            {/* Mobile Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle Theme"
+              className="p-2 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-amber-400 border border-slate-200 dark:border-white/10"
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
             <button
               onClick={onOpenFreeTrial}
               className="text-xs font-bold px-3 py-2 rounded-lg bg-emerald-500 text-slate-950"
@@ -165,7 +191,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 focus:outline-none"
+              className="p-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 focus:outline-none"
               aria-label="Toggle Menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -177,14 +203,14 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {isMobileMenuOpen && (
-        <div className="xl:hidden bg-[#0D121F]/98 border-b border-white/10 px-4 pt-3 pb-6 space-y-3 backdrop-blur-xl animate-in slide-in-from-top duration-200">
-          <div className="grid grid-cols-2 gap-2 pb-2 border-b border-white/10">
+        <div className="xl:hidden bg-white/98 dark:bg-[#0D121F]/98 border-b border-slate-200 dark:border-white/10 px-4 pt-3 pb-6 space-y-3 backdrop-blur-xl animate-in slide-in-from-top duration-200">
+          <div className="grid grid-cols-2 gap-2 pb-2 border-b border-slate-200 dark:border-white/10">
             <button
               onClick={() => {
                 setIsMobileMenuOpen(false);
                 onOpenAssessment();
               }}
-              className="w-full text-left py-2.5 px-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold text-xs flex items-center gap-2"
+              className="w-full text-left py-2.5 px-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-semibold text-xs flex items-center gap-2"
             >
               <Flame className="w-4 h-4" />
               <span>Assessment</span>
@@ -194,20 +220,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setIsMobileMenuOpen(false);
                 onOpenDashboard();
               }}
-              className="w-full text-left py-2.5 px-3 rounded-lg bg-white/5 border border-white/10 text-white font-semibold text-xs flex items-center gap-2"
+              className="w-full text-left py-2.5 px-3 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white font-semibold text-xs flex items-center gap-2"
             >
-              <User className="w-4 h-4 text-emerald-400" />
+              <User className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
               <span>Dashboard</span>
             </button>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 text-sm font-medium text-slate-300">
+          <div className="grid grid-cols-2 gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-lg hover:bg-white/5 hover:text-white transition-colors"
+                className="py-2 px-3 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 hover:text-emerald-600 dark:hover:text-white transition-colors"
               >
                 {link.name}
               </a>
@@ -224,16 +250,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               Start 7-Day Free Trial
             </button>
-            <button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                onOpenAdmin();
-              }}
-              className="w-full py-2 text-xs text-slate-400 hover:text-slate-200 flex items-center justify-center gap-1.5"
-            >
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Admin Management Portal</span>
-            </button>
+            <div className="flex items-center justify-between pt-1">
+              <button
+                onClick={toggleTheme}
+                className="text-xs text-slate-600 dark:text-slate-300 flex items-center gap-1.5 py-1 px-2 rounded-lg bg-slate-100 dark:bg-white/5"
+              >
+                {theme === 'dark' ? <Sun className="w-3.5 h-3.5 text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-slate-700" />}
+                <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+              </button>
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  onOpenAdmin();
+                }}
+                className="py-2 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 flex items-center gap-1.5"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Admin Portal</span>
+              </button>
+            </div>
           </div>
         </div>
       )}

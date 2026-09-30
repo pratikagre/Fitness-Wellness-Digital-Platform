@@ -4,11 +4,11 @@ import {
   Sparkles, 
   ArrowRight, 
   ShieldCheck, 
-  HelpCircle,
-  Zap,
-  Users,
-  UserCheck,
-  Building2
+  HelpCircle, 
+  Zap, 
+  Users, 
+  UserCheck, 
+  Building2 
 } from 'lucide-react';
 import { GROUP_PLANS, PERSONAL_PLANS, CORPORATE_PACKAGES } from '../data/plansData';
 
@@ -25,31 +25,31 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'quarterly' | 'annual'>('quarterly');
 
   return (
-    <section id="pricing" className="py-24 bg-[#080B12] relative">
+    <section id="pricing" className="py-24 bg-[#F7FAF8] dark:bg-[#080B12] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">
             12. Transparent Pricing
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-display mt-4 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white font-display mt-4 mb-4">
             Invest in Your Long-Term Vitality
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
             Simple, honest pricing with zero hidden charges. All plans begin with a 7-day free trial or single class trial pass.
           </p>
         </div>
 
         {/* Tier Switcher (GROUP | PERSONAL | CORPORATE) */}
         <div className="flex justify-center mb-10">
-          <div className="bg-[#121826] p-1.5 rounded-2xl border border-white/10 flex items-center gap-1">
+          <div className="bg-slate-200 dark:bg-[#121826] p-1.5 rounded-2xl border border-slate-300 dark:border-white/10 flex items-center gap-1 shadow-sm">
             <button
               onClick={() => setActiveTier('group')}
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${
                 activeTier === 'group'
                   ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white'
               }`}
             >
               <Users className="w-4 h-4" />
@@ -61,7 +61,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${
                 activeTier === 'personal'
                   ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white'
               }`}
             >
               <UserCheck className="w-4 h-4" />
@@ -73,7 +73,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${
                 activeTier === 'corporate'
                   ? 'bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/20'
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-700 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white'
               }`}
             >
               <Building2 className="w-4 h-4" />
@@ -85,11 +85,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
         {/* If GROUP is active, show billing cycle selector (Monthly / 3 Months / Annual) */}
         {activeTier === 'group' && (
           <div className="flex justify-center mb-12">
-            <div className="flex items-center gap-2 bg-white/5 p-1 rounded-xl border border-white/5">
+            <div className="flex items-center gap-2 bg-white dark:bg-white/5 p-1 rounded-xl border border-slate-200 dark:border-white/5 shadow-sm">
               <button
                 onClick={() => setBillingCycle('monthly')}
                 className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
-                  billingCycle === 'monthly' ? 'bg-white/15 text-white font-bold' : 'text-slate-400 hover:text-white'
+                  billingCycle === 'monthly' ? 'bg-slate-100 dark:bg-white/15 text-slate-900 dark:text-white font-bold' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 Monthly
@@ -97,7 +97,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               <button
                 onClick={() => setBillingCycle('quarterly')}
                 className={`px-4 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-                  billingCycle === 'quarterly' ? 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30' : 'text-slate-400 hover:text-white'
+                  billingCycle === 'quarterly' ? 'bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 font-bold border border-emerald-500/30' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <span>3 Months</span>
@@ -106,7 +106,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               <button
                 onClick={() => setBillingCycle('annual')}
                 className={`px-4 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
-                  billingCycle === 'annual' ? 'bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30' : 'text-slate-400 hover:text-white'
+                  billingCycle === 'annual' ? 'bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 font-bold border border-emerald-500/30' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 <span>Annual</span>
@@ -115,8 +115,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             </div>
           </div>
         )}
-
-        {/* Content depending on Active Tier */}
 
         {/* 1. GROUP PLANS */}
         {activeTier === 'group' && (
@@ -137,10 +135,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
               return (
                 <div
                   key={plan.id}
-                  className={`rounded-3xl p-8 border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative shadow-xl ${
+                  className={`rounded-3xl p-8 border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative shadow-md dark:shadow-xl ${
                     plan.isPopular
-                      ? 'bg-gradient-to-b from-[#141E2D] via-[#0F1624] to-[#0D121F] border-emerald-500/50 shadow-emerald-500/10'
-                      : 'bg-[#0E131E] border-white/10 hover:border-white/20'
+                      ? 'bg-gradient-to-b from-emerald-50/80 via-white to-emerald-50/30 dark:from-[#141E2D] dark:via-[#0F1624] dark:to-[#0D121F] border-emerald-500/50 shadow-emerald-500/10'
+                      : 'bg-white dark:bg-[#0E131E] border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20'
                   }`}
                 >
                   {plan.badge && (
@@ -150,22 +148,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                   )}
 
                   <div>
-                    <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-                    <p className="text-xs text-slate-400 min-h-[36px] mb-6 leading-relaxed">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{plan.name}</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 min-h-[36px] mb-6 leading-relaxed">
                       {plan.description}
                     </p>
 
-                    <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/5">
+                    <div className="mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
                       <div className="flex items-baseline gap-1.5">
-                        <span className="text-3xl sm:text-4xl font-extrabold text-white font-mono">
+                        <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono">
                           ₹{displayPrice?.toLocaleString()}
                         </span>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-500 dark:text-slate-400">
                           {billingCycle === 'annual' ? '/ year' : billingCycle === 'quarterly' ? '/ 3 mos' : '/ month'}
                         </span>
                       </div>
                       {billingCycle !== 'monthly' && (
-                        <p className="text-[11px] text-emerald-400 font-semibold mt-1">
+                        <p className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold mt-1">
                           Equals approx. ₹{perMonthEquivalent}/month
                         </p>
                       )}
@@ -173,23 +171,23 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
 
                     {/* Features */}
                     <div className="space-y-3 pt-2">
-                      <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Inclusions:</p>
+                      <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Inclusions:</p>
                       {plan.features.map((feat, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                          <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+                          <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                           <span>{feat}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-white/10">
+                  <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/10">
                     <button
                       onClick={onStartFreeTrial}
                       className={`w-full py-3.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 ${
                         plan.isPopular
                           ? 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-emerald-500/25'
-                          : 'bg-white/10 hover:bg-white/15 text-white border border-white/10'
+                          : 'bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 text-slate-900 dark:text-white border border-slate-200 dark:border-white/10'
                       }`}
                     >
                       <span>{plan.ctaText}</span>
@@ -211,10 +209,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             {PERSONAL_PLANS.map((plan) => (
               <div
                 key={plan.id}
-                className={`rounded-3xl p-8 border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative shadow-xl ${
+                className={`rounded-3xl p-8 border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 relative shadow-md dark:shadow-xl ${
                   plan.isPopular
-                    ? 'bg-gradient-to-b from-[#161B26] via-[#101520] to-[#0D121F] border-amber-500/40 shadow-amber-500/10'
-                    : 'bg-[#0E131E] border-white/10 hover:border-white/20'
+                    ? 'bg-gradient-to-b from-amber-50/70 via-white to-amber-50/30 dark:from-[#161B26] dark:via-[#101520] dark:to-[#0D121F] border-amber-500/40 shadow-amber-500/10'
+                    : 'bg-white dark:bg-[#0E131E] border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20'
                 }`}
               >
                 {plan.badge && (
@@ -224,37 +222,37 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
                 )}
 
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-                  <p className="text-xs text-slate-400 min-h-[36px] mb-6 leading-relaxed">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{plan.name}</h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 min-h-[36px] mb-6 leading-relaxed">
                     {plan.description}
                   </p>
 
-                  <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/5">
+                  <div className="mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
                     <div className="flex items-baseline gap-1.5">
-                      <span className="text-3xl sm:text-4xl font-extrabold text-white font-mono">
+                      <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-mono">
                         ₹{plan.priceMonthly.toLocaleString()}
                       </span>
-                      <span className="text-xs text-slate-400">/ month</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400">/ month</span>
                     </div>
                     {plan.sessionsIncluded && (
-                      <p className="text-xs text-amber-400 font-semibold mt-1">
+                      <p className="text-xs text-amber-700 dark:text-amber-400 font-semibold mt-1">
                         {plan.sessionsIncluded}
                       </p>
                     )}
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">What You Get:</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">What You Get:</p>
                     {plan.features.map((feat, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+                        <Check className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10">
+                <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/10">
                   <button
                     onClick={onStartFreeTrial}
                     className="w-full py-3.5 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
@@ -277,36 +275,36 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
             {CORPORATE_PACKAGES.map((pkg) => (
               <div
                 key={pkg.id}
-                className="rounded-3xl p-8 bg-[#0E131E] border border-cyan-500/20 hover:border-cyan-500/40 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-xl relative"
+                className="rounded-3xl p-8 bg-white dark:bg-[#0E131E] border border-cyan-500/30 hover:border-cyan-500/50 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 shadow-md dark:shadow-xl relative"
               >
                 <div>
-                  <span className="text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider block mb-1">
+                  <span className="text-[11px] font-mono font-bold text-cyan-700 dark:text-cyan-400 uppercase tracking-wider block mb-1">
                     {pkg.teamSize}
                   </span>
-                  <h3 className="text-xl font-bold text-white mb-2">{pkg.name}</h3>
-                  <p className="text-xs text-slate-400 mb-6">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{pkg.name}</h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mb-6">
                     {pkg.idealFor}
                   </p>
 
-                  <div className="mb-6 p-4 rounded-2xl bg-white/5 border border-white/5">
-                    <span className="text-xs text-slate-400 block mb-0.5">Indicative Investment</span>
-                    <span className="text-lg sm:text-xl font-bold text-white font-mono">
+                  <div className="mb-6 p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5">
+                    <span className="text-xs text-slate-500 dark:text-slate-400 block mb-0.5">Indicative Investment</span>
+                    <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-mono">
                       {pkg.startingPrice}
                     </span>
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Included Deliverables:</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Included Deliverables:</p>
                     {pkg.inclusions.map((inc, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+                        <Check className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
                         <span>{inc}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-white/10">
+                <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/10">
                   <button
                     onClick={onRequestCorporateDemo}
                     className="w-full py-3.5 rounded-xl font-extrabold text-xs sm:text-sm bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 shadow-lg shadow-cyan-500/25 transition-all flex items-center justify-center gap-2"
@@ -324,16 +322,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({
         )}
 
         {/* Free Trial Callout Banner */}
-        <div className="mt-16 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-teal-950/40 border border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-16 p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-white to-teal-50 dark:from-emerald-950/40 dark:via-slate-900 dark:to-teal-950/40 border border-emerald-200 dark:border-emerald-500/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-white">
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                 Hesitant about committing? Experience Xanso risk-free.
               </h4>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-600 dark:text-slate-400">
                 Choose between a Single Free Live Class Pass or a 7-Day Unlimited Free Access Pass.
               </p>
             </div>

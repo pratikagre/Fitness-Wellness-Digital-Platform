@@ -6,9 +6,9 @@ import {
   Calendar, 
   ArrowRight, 
   Sparkles, 
-  Filter,
-  CheckCircle2,
-  Users
+  Filter, 
+  CheckCircle2, 
+  Users 
 } from 'lucide-react';
 
 interface FeaturedProgramsProps {
@@ -33,25 +33,25 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
     : PROGRAMS_DATA.filter(p => p.category === activeCategory);
 
   return (
-    <section id="programs" className="py-24 bg-[#080B12] relative">
+    <section id="programs" className="py-24 bg-[#F1F6F3] dark:bg-[#080B12] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20">
               7. Featured Programs
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-display mt-4 mb-3">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white font-display mt-4 mb-3">
               Master-Planned Wellness Journeys
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base">
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
               Every program card provides complete transparency: Level, Duration, Master Trainer, Live Schedule, and Pricing.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>Updated with new upcoming batch cohorts</span>
           </div>
         </div>
@@ -65,7 +65,7 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
               className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
                 activeCategory === cat.id
                   ? 'bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20'
-                  : 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white border border-white/5'
+                  : 'bg-white dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/10 hover:text-slate-950 dark:hover:text-white border border-slate-200 dark:border-white/5 shadow-sm'
               }`}
             >
               {cat.label}
@@ -78,7 +78,7 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
           {filtered.map((prog) => (
             <div 
               key={prog.id}
-              className="rounded-3xl bg-[#0F1420] border border-white/10 hover:border-emerald-500/40 overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 shadow-xl"
+              className="rounded-3xl bg-white dark:bg-[#0F1420] border border-slate-200 dark:border-white/10 hover:border-emerald-500/40 overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1.5 shadow-md dark:shadow-xl"
             >
               <div>
                 {/* Image & Overlays */}
@@ -88,7 +88,7 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
                     alt={prog.title} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1420] via-black/30 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   
                   {/* Top Badges */}
                   <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
@@ -116,26 +116,26 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
 
                 {/* Body Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 transition-colors">
                     {prog.title}
                   </h3>
                   
-                  <p className="text-xs sm:text-sm text-slate-400 line-clamp-2 mb-5 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-5 leading-relaxed">
                     {prog.shortDescription}
                   </p>
 
                   {/* Highlights Bullet List */}
                   <div className="space-y-2 mb-6">
                     {prog.highlights.slice(0, 2).map((h, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-slate-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                         <span className="line-clamp-1">{h}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Trainer & Schedule Footer */}
-                  <div className="pt-4 border-t border-white/10 space-y-3">
+                  <div className="pt-4 border-t border-slate-100 dark:border-white/10 space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
                         <img 
@@ -144,18 +144,18 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
                           className="w-9 h-9 rounded-full object-cover border border-emerald-500/40" 
                         />
                         <div>
-                          <p className="text-xs font-bold text-white">{prog.trainerName}</p>
-                          <p className="text-[10px] text-emerald-400 font-medium">{prog.sessionsPerWeek} Live Sessions / Wk</p>
+                          <p className="text-xs font-bold text-slate-900 dark:text-white">{prog.trainerName}</p>
+                          <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">{prog.sessionsPerWeek} Live Sessions / Wk</p>
                         </div>
                       </div>
-                      <span className="text-[11px] font-semibold text-slate-400 flex items-center gap-1">
+                      <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1">
                         <Users className="w-3.5 h-3.5" /> {prog.enrolledMembers}
                       </span>
                     </div>
 
-                    <div className="py-2 px-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between text-xs text-slate-300">
-                      <span className="text-slate-400">Schedule</span>
-                      <span className="font-mono text-[11px] text-emerald-300">{prog.schedule}</span>
+                    <div className="py-2 px-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/5 flex items-center justify-between text-xs text-slate-700 dark:text-slate-300">
+                      <span className="text-slate-500 dark:text-slate-400">Schedule</span>
+                      <span className="font-mono text-[11px] text-emerald-600 dark:text-emerald-300 font-medium">{prog.schedule}</span>
                     </div>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export const FeaturedPrograms: React.FC<FeaturedProgramsProps> = ({ onSelectProg
               <div className="p-6 pt-0">
                 <button
                   onClick={() => onSelectProgram(prog)}
-                  className="w-full py-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 hover:text-slate-950 text-emerald-400 font-bold text-xs sm:text-sm border border-emerald-500/25 hover:border-emerald-500 transition-all flex items-center justify-center gap-2 group/btn"
+                  className="w-full py-3 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 hover:text-slate-950 text-emerald-700 dark:text-emerald-400 font-bold text-xs sm:text-sm border border-emerald-500/25 hover:border-emerald-500 transition-all flex items-center justify-center gap-2 group/btn"
                 >
                   <span>View Full Curriculum & Enroll</span>
                   <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
